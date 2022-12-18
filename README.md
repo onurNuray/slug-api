@@ -27,11 +27,15 @@ git clone https://github.com/onurNuray/slug-api.git
     **JWT_TOKEN=** random bir değer, şifreleme işlemleri için
 4. Mysql veritabanınızda .env dostanızda belirttiğiniz isimde bir database oluşturun.
 5. Php çalışma ortamanızda **php.ini** dosyanızda **extension=pdo_mysql** satırındaki markdown'u (;) kaldırın.
-6. Migration'ı çalıştırın. Bu komut veritabanınızda ilgili tabloları oluşturacak.
+6. composer update komutu ile proje için gerekli paketlerin yüklenmesini sağlayın.
+```
+composer update
+```
+7. Migration'ı çalıştırın. Bu komut veritabanınızda ilgili tabloları oluşturacak.
 ```
 php artisan migrate:fresh
 ```
-7. Projeyi çalışma dizinizdeyken aşağıdaki kod ile ayağa kaldırın.
+8. Projeyi çalışma dizinizdeyken aşağıdaki kod ile ayağa kaldırın.
 ```
 php artisan serve
 ```
