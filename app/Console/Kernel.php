@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +16,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $users = User::all();
+        foreach ($users as $user) {
+            $process = $user->local[3];
+            $hour = substr($user->local, 4, strlen($user->local));
+            $hour = explode(":", $hour);
+            $minute = $hour[1] ?? 0;
+            $hour = $hour[0];
+            if($process == '+') {
+                $hour = 10 + $hour;
+            } else {
+                $hour = 10 - $hour;
+            }
+            $schedule->command('mail: send ' . $user->email)->dailyAt($hour . ':' . $minute);
+        }
     }
 
     /**
