@@ -45,3 +45,7 @@ Register ve login işlemleri dışındaki işlemler **Authorization** gerektirir
 ## Slug Yönlendirmesi
 
 Slug yönlendirmesime için projenin çalıştığı host/{slug} şeklinde ulaşılabilir.
+
+## Email Gönderimi
+
+Her gün kullanıcının local saatine göre saat 10 da email gönderimi ile ilgili kodlar app/Console altındaki Commands/SendEmails.php ve kernel.php'den ulaşılabilir.
